@@ -891,10 +891,10 @@ body {
 .smart-fireplace__title span {
   display: inline-block;
   vertical-align: middle;
-  width: 40px;
+  width: 4rem;
   height: 0px;
   border: 1px solid #949494;
-  margin: 0 41px;
+  margin: 0 4.1rem;
 }
 .smart-fireplace__subtitle {
   font-weight: 300;
