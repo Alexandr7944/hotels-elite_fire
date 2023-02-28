@@ -9,10 +9,19 @@ var handleInputChange = function handleInputChange(e) {
   var target = e.target;
   var min = target.min;
   var max = target.max;
-  var val = target.value;
-  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
+  var value = target.value;
+  target.style.backgroundSize = "".concat((value - min) * 100 / (max - min), "% 100%");
 };
 rangeInput.addEventListener('input', handleInputChange);
+var burgerBtn = document.querySelector('.burger__btn');
+var menu = document.querySelector('.menu-mobile');
+var close = function close() {
+  menu.classList.toggle('none');
+  burgerBtn.classList.toggle('close');
+};
+document.addEventListener('click', function (e) {
+  if (e.target.closest('.menu-mobile__item a') || !e.target.closest('.menu-mobile')) close();
+});
 
 /***/ })
 
