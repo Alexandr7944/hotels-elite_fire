@@ -1,12 +1,24 @@
-const rangeInput = document.querySelector('.designer__length')
+const rangeInput = document.querySelector('.designer__length');
 
-const handleInputChange = e => {
-  const target = e.target;
-  const min = target.min;
-  const max = target.max;
-  const val = target.value;
-  
-  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
-}
+const handleInputChange = (e) => {
+  const { target } = e;
+  const { min } = target;
+  const { max } = target;
+  const { value } = target;
 
-rangeInput.addEventListener('input', handleInputChange)
+  target.style.backgroundSize = `${((value - min) * 100) / (max - min)}% 100%`;
+};
+
+rangeInput.addEventListener('input', handleInputChange);
+
+const burgerBtn = document.querySelector('.burger__btn');
+const menu = document.querySelector('.menu-mobile');
+const close = () => {
+  menu.classList.toggle('none');
+  burgerBtn.classList.toggle('close');
+};
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.menu-mobile__item a')
+    || !e.target.closest('.menu-mobile')) close();
+});

@@ -11,8 +11,8 @@
 @mixin title-h2()
   display: inline-block
   font-weight: 250
-  font-size: 40px
-  line-height: 60px
+  font-size: 4rem
+  line-height: 6rem
   letter-spacing: 0.07em
   text-transform: uppercase
   background: linear-gradient(240.22deg, #FFFFFF 31.8%, rgba(255, 255, 255, 0) 100%)
@@ -23,8 +23,8 @@
 
 @mixin title-h4()
   font-weight: 300
-  font-size: 20px
-  line-height: 33px
+  font-size: 2rem
+  line-height: 3.3rem
   letter-spacing: 0.03em
   color: $whiteText
 
@@ -44,6 +44,7 @@ $ffLogo: 'Scania Sans CY Headline'
 
 html
   scroll-behavior: smooth
+  font-size: 10px
 
 body
   background-color: $bgColor
@@ -56,7 +57,7 @@ body
   overflow: hidden
 
 .container
-  width: 1224px
+  max-width: 1224px
   padding: 0 15px
   margin: 0 auto
 
@@ -70,6 +71,7 @@ body
   &__logo
     display: flex
     align-items: center
+    margin-right: 30px
     .name
       @include logoName()
     .text
@@ -131,14 +133,95 @@ body
     background-position: center
     z-index: 10
 
+.burger
+  display: none
+.burger__btn
+  overflow: hidden
+  width: 40px
+  height: 40px
+  background: transparent
+  border-radius: 5px
+  cursor: pointer
+  position: relative
+
+.burger__btn span
+  display: block
+  position: absolute
+  background: $whiteText
+  width: 30px
+  height: 4px
+  top: 18px
+  left: 5px
+  right: 5px
+  transition-duration: .3s
+
+.burger__btn span:after,
+.burger__btn span:before
+  content: ''
+  display: block
+  position: absolute
+  background: $whiteText
+  width: 100%
+  height: 4px
+  transition: .3s
+
+.burger__btn span:before
+  bottom: -9px
+
+.burger__btn span:after
+  top: -9px
+
+.close span
+  background: none
+
+.close span:after
+  top: 0
+  transform: rotate(45deg)
+
+.close span:before
+  bottom: 0
+  transform: rotate(-45deg)
+
+.menu-mobile
+  position: absolute
+  background-color: $bgColor
+  padding: 40px 20px
+  border-radius: 0 0 30px 0
+  overflow: hidden
+  top: 119px
+  left: 0
+  width: 80%
+  max-width: 300px
+  color: $whiteText
+  animation: menu-mobile .5s ease 1 alternate
+  z-index: 10
+
+@keyframes menu-mobile
+  0%
+    left: -350px
+  100%
+    left: 0
+		
+.menu-mobile__item
+  margin-bottom: 35px
+  &::last-child
+    margin-bottom: 0
+  a
+    font-weight: 300
+    color: inherit
+    font-size: 16px
+
+.none
+  display: none
+
 .automatic-fireplaces
   padding-top: 8px
   padding-bottom: 50px
   &__title
     max-width: 750px
     font-weight: 250
-    font-size: 64px
-    line-height: 80px
+    font-size: 6.5rem
+    line-height: 8rem
     letter-spacing: 0.05em
     text-transform: uppercase
     background: linear-gradient(226.43deg, #FFFFFF 49.37%, rgba(255, 255, 255, 0) 99.78%)
@@ -176,6 +259,7 @@ body
       margin-bottom: 20px
   &__img
     position: absolute
+    max-width: 65%
     top: 1px
     right: 1%
     z-index: -1
@@ -257,9 +341,10 @@ body
     max-width: 990px
     margin: 0 auto
     display: flex
-    justify-content: space-between
+    justify-content: center
     align-items: center
-    gap: 15px
+    flex-wrap: wrap
+    gap: 50px
   &__item
     min-height: 50px
     padding: 5px 0 5px 75px
@@ -497,10 +582,10 @@ body
     span
       display: inline-block
       vertical-align: middle
-      width: 40px
+      width: 4rem
       height: 0px
       border: 1px solid #949494
-      margin: 0 41px
+      margin: 0 4.1rem
 
   &__subtitle
     @include title-h4()
@@ -531,7 +616,8 @@ body
   padding-bottom: 30px
 .info__flex
   display: flex
-  justify-content: space-between
+  justify-content: center
+  gap: 7%
   flex-wrap: wrap
   margin-bottom: 95px
 
@@ -620,8 +706,8 @@ body
   position: relative
   &__title
     font-weight: 300
-    font-size: 30px
-    line-height: 44px
+    font-size: 3rem
+    line-height: 4.4rem
     margin-bottom: 40px
   &___btn
     background: #ECCF94
@@ -680,8 +766,9 @@ body
     margin-bottom: 45px
   &__row
     display: flex
-    justify-content: space-between
-    gap: 3.3%
+    justify-content: center
+    flex-wrap: wrap
+    gap: 30px
   &__item
     width: 370px
     height: 267px
@@ -701,17 +788,18 @@ body
   &__flex
     text-align: left
     display: flex
-    justify-content: space-between
+    justify-content: center
+    flex-wrap: wrap
     gap: 85px
     margin-bottom: 80px
     position: relative
 
   &__left-item
-    flex: 0 0 535px
+    flex: 0 1 535px
     img
       width: 100%
   &__right-item
-    flex: 1 1 auto
+    flex: 0 1 45%
   &__input-row
   &__input-title
     font-weight: 500
@@ -813,7 +901,7 @@ body
     justify-content: space-between
     flex-wrap: wrap
   label
-    margin-top: 21px 
+    margin-top: 21px
     min-width: 220px
     span
       font-weight: 500
@@ -832,7 +920,7 @@ body
         display: flex
         justify-content: center
         align-items: center
-        
+
     input
       position: absolute
       width: 1px
@@ -857,7 +945,7 @@ body
     border-radius: 300px
     transform: matrix(1, 0, 0, -1, 0, 0)
     z-index: -1
-        
+
 .output
   display: flex
   justify-content: space-between
@@ -920,7 +1008,6 @@ body
       filter: blur(25px)
       transform: matrix(-1, 0, 0, 1, 0, 0)
 
-
 .footer
   background-color: #121212
   padding-top: 72px
@@ -977,14 +1064,75 @@ body
     color: $grayText
     a
       color: inherit
-    span
-      margin-right: 4%
-
-  &__company
-    margin-right: 33%
+    .row-flex
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+      gap: 10%
 
 div .footer__logo-name
   @include logoName()
   color: $whiteText
   font-size: 14px
   margin-right: 9%
+
+@media ( max-width: 1000px )
+  .header__logo
+    .name
+      flex: 0 0 150px
+      margin-right: 0
+    .text
+      display: none
+  .header__menu
+    margin-right: 30px
+  .designer__left-item,
+  .designer__right-item
+    flex: 0 1 80%
+  .footer__list
+    grid-template-columns: 1fr 1fr
+  .footer__item
+    margin-bottom: 40px
+
+@media ( max-width: 768px )
+  html
+    font-size: 8px
+  .header__list,
+  .header__phone
+    display: none
+
+  .burger
+    display: block
+
+  .designer__left-item,
+  .designer__right-item
+    flex: 1 1 auto
+  .output
+    justify-content: center
+    flex-direction: column
+    gap: 30px
+    &__front-color
+      margin: 0 auto
+  .footer__list
+    grid-column-gap: 15px
+  .footer__item
+    margin-bottom: 10px
+  .footer__item-5,
+  .footer__item-6
+    grid-column-start: 1
+    grid-column-end: 3
+
+  .footer__link
+    font-size: 16px
+
+@media ( max-width: 580px )
+  html
+    font-size: 6px
+  .front-panel
+    img
+      width: 100%
+  .info__img
+    width: 100%
+  .refueling__algorithm
+    display: none
+  .refueling__text
+    padding-left: 15px
